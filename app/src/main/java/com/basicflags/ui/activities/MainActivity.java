@@ -47,6 +47,11 @@ public class MainActivity extends BasicActivity {
         return Collections.singletonList(getFlagsSubscription());
     }
 
+    @Override
+    protected void onRetryRequest() {
+        createSubscriptions();
+    }
+
     private Subscription getFlagsSubscription() {
         return createAndAddSubscription(bindOnNextAction(getRxApiService().getFlags(),list -> getAdapter().addItems(list)));
     }
